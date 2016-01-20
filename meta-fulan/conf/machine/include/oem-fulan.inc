@@ -155,7 +155,7 @@ IMAGE_FSTYPES ?= "jffs2"
 #IMAGE_FSTYPES += "spark71xx-usbimg "
 #INHERIT += "usb_image-spark71xx"
 
-IMAGE_CLASSES += "usb_image-spark71xx"
+IMAGE_CLASSES += "usb_image-spark71xx update_image-spark"
 INITRAMFS_FSTYPES = "ext2.gz spark-updt"
 
 IMAGE_CMD_jffs2_prepend = " \
@@ -192,14 +192,6 @@ MACHINE_EXTRA_RRECOMMENDS = " \
     gstreamer1.0-plugin-dvbmediasink \
     enigma2-plugin-systemplugins-sh4boostercontrol \
     enigma2-plugin-systemplugins-sh4osdadjustment \
-    "
-
-EXTRA_IMAGEDEPENDS += "\
-    enigma2-plugin-systemplugins-vfdcontrol \
-    "
-
-MACHINE_EXTRA_RDEPENDS = "\
-    enigma2-plugin-systemplugins-vfdcontrol \
     "
 
 include conf/machine/include/autoload-filesystems.inc

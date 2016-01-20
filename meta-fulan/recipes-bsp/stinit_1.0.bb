@@ -1,6 +1,6 @@
 DESCRIPTION = "STM Specific init script"
 LICENSE = "CLOSED"
-require conf/license/license-close.inc
+require conf/license/openpli-gplv2.inc
 
 PR = "r3"
 
