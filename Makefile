@@ -31,6 +31,7 @@ BBLAYERS ?= \
 	$(CURDIR)/meta-formuler \
 	$(CURDIR)/meta-hd \
         $(CURDIR)/meta-fulan \
+        $(CURDIR)/meta-ini \
 	$(CURDIR)/meta-local
 
 CONFFILES = \

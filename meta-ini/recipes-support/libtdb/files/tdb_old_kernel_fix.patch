@@ -1,0 +1,14 @@
+diff -Naur tdb-1.3.0.orig/lib/replace/test/testsuite.c tdb-1.3.0/lib/replace/test/testsuite.c
+--- tdb-1.3.0.orig/lib/replace/test/testsuite.c	2016-01-21 11:12:47.637124393 +0100
++++ tdb-1.3.0/lib/replace/test/testsuite.c	2016-01-21 11:13:10.369124393 +0100
+@@ -31,9 +31,9 @@
+   we include all the system/ include files here so that libreplace tests
+   them in the build farm
+ */
+-#include "system/capability.h"
+ #include "system/dir.h"
+ #include "system/filesys.h"
++#include "system/capability.h"
+ #include "system/glob.h"
+ #include "system/iconv.h"
+ #include "system/locale.h"
