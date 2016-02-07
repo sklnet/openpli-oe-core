@@ -5,13 +5,6 @@ BRAND_OEM = "ini"
 
 GST_VERSION = "1.0"
 
-MACHINE_NAME = "LX-x"
-MACHINE_BRAND = "GI"
-
-IMAGEDIR ?= "xpeedlx"
-MTD_KERNEL = "mtd2"
-MTD_ROOTFS = "mtd0"
-MACHINE_DRIVER = "inihde"
 KERNEL_FILE = "kernel.bin"
 ROOTFS_FILE = "rootfs.bin"
 
