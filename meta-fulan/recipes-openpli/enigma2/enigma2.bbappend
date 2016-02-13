@@ -9,7 +9,7 @@ RDEPENDS_${PN} += " \
 "
 
 EXTRA_OECONF += " \
-    ${@base_contains("TARGET_ARCH", "sh4", "--enable-sh=yes " , "", d)} \
+    ${@base_contains("TARGET_ARCH", "sh4", "--with-stmfb=yes " , "", d)} \
     ${@base_contains("MACHINE_FEATURES", "eplayer3", "--enable-libeplayer3=yes" , "", d)} \
 "
 

@@ -35,7 +35,8 @@ BBLAYERS ?= \
 	$(CURDIR)/meta-xpeedc \
 	$(CURDIR)/meta-wetek \
 	$(CURDIR)/meta-zgemma \
-	$(CURDIR)/meta-local
+	$(CURDIR)/meta-local \
+        $(CURDIR)/meta-private
 
 CONFFILES = \
 	$(TOPDIR)/env.source \

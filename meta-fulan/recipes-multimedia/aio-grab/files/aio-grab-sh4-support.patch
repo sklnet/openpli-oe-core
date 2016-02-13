@@ -1,8 +1,7 @@
-diff --git a/main.c b/main.c
-index bb74bf4..77b1432 100644
---- a/main.c
-+++ b/main.c
-@@ -38,9 +38,53 @@ Feel free to use the code for your own projects. See LICENSE file for details.
+diff '--exclude=.git*' -Naur aio-grab-openpli/main.c aio-grab-openpli-skl/main.c
+--- aio-grab-openpli/main.c	2016-02-12 17:14:19.411335332 +0100
++++ aio-grab-openpli-skl/main.c	2016-02-12 17:13:08.539603333 +0100
+@@ -38,9 +38,53 @@
  #include <linux/types.h>
  #include <linux/fb.h>
  
@@ -56,7 +55,7 @@ index bb74bf4..77b1432 100644
  #define CLAMP(x)    ((x < 0) ? 0 : ((x > 255) ? 255 : x))
  #define SWAP(x,y)	{ x ^= y; y ^= x; x ^= y; }
  
-@@ -53,6 +97,31 @@ Feel free to use the code for your own projects. See LICENSE file for details.
+@@ -53,6 +97,31 @@
  #define CRFB(x)   ((((x) >> (2)) & 0xf) << 4)
  #define BFFB(x)   ((((x) >> (0)) & 0x3) << 6)
  
@@ -88,19 +87,20 @@ index bb74bf4..77b1432 100644
  #define VIDEO_DEV "/dev/video"
  
  // dont change SPARE_RAM and DMA_BLOCKSIZE until you really know what you are doing !!!
-@@ -83,7 +152,11 @@ void fast_resize(const unsigned char *source, unsigned char *dest, int xsource,
+@@ -83,8 +152,11 @@
  void (*resize)(const unsigned char *source, unsigned char *dest, int xsource, int ysource, int xdest, int ydest, int colors);
  void combine(unsigned char *output, const unsigned char *video, const unsigned char *osd, int vleft, int vtop, int vwidth, int vheight, int xres, int yres);
  
 +#if !defined(__sh__)
- static enum {UNKNOWN, PALLAS, VULCAN, XILLEON, BRCM7366ARM, BRCM7400, BRCM7401, BRCM7405, BRCM7325, BRCM7335, BRCM7358, BRCM7362, BRCM7241, BRCM7346, BRCM7356, BRCM7424, BRCM7425, BRCM7435, BRCM7552} stb_type = UNKNOWN;
+ static enum {UNKNOWN, PALLAS, VULCAN, WETEKPLAY, XILLEON, BRCM7366ARM, BRCM7400, BRCM7401, BRCM7405, BRCM7325, BRCM7335, BRCM7358, BRCM7362, BRCM7241, BRCM7346, BRCM7356, BRCM7424, BRCM7425, BRCM7435, BRCM7552} stb_type = UNKNOWN;
+-
 +#else
-+static enum {UNKNOWN, ST, PALLAS, VULCAN, XILLEON, BRCM7366ARM, BRCM7400, BRCM7401, BRCM7405, BRCM7325, BRCM7335, BRCM7358, BRCM7362, BRCM7241, BRCM7346, BRCM7356, BRCM7424, BRCM7425, BRCM7435, BRCM7552} stb_type = UNKNOWN;
++static enum {UNKNOWN, ST, PALLAS, VULCAN, WETEKPLAY, XILLEON, BRCM7366ARM, BRCM7400, BRCM7401, BRCM7405, BRCM7325, BRCM7335, BRCM7358, BRCM7362, BRCM7241, BRCM7346, BRCM7356, BRCM7424, BRCM7425, BRCM7435, BRCM7552} stb_type = UNKNOWN;
 +#endif
  
  static int chr_luma_stride = 0x40;
  static int chr_luma_register_offset = 0;
-@@ -126,6 +199,9 @@ int main(int argc, char **argv)
+@@ -127,6 +199,9 @@
  		if (strcasestr(buf,"VULCAN")) stb_type=VULCAN;
  		if (strcasestr(buf,"PALLAS")) stb_type=PALLAS;
  		if (strcasestr(buf,"XILLEON")) stb_type=XILLEON;
@@ -110,7 +110,7 @@ index bb74bf4..77b1432 100644
  	}
  	fclose(fp);
  
-@@ -959,6 +1035,265 @@ void getvideo(unsigned char *video, int *xres, int *yres)
+@@ -965,6 +1040,265 @@
  		}
  		munmap(memory_tmp, memory_tmp_size);
  	}
