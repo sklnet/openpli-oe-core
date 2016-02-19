@@ -2,7 +2,7 @@
 /.deps/
 !/meta-openpli/
 !/meta-local/
-!/meta-private/
+/meta-private/
 /openembedded-core/
 /sources/
 *.swp
