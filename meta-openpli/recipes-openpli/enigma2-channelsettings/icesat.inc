@@ -4,7 +4,7 @@ PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
 PR = "r0"
 
-SRCREV = "8ca606176939fdb7e6fa562ef6c2230750e0647f"
+SRCREV = "2fba21da231529400b84d3d33c865ff03cfb6db2"
 
 SRC_URI = "git://github.com/icesat/Enigma2-settings-13.0E-19.2E-23.5E-28.2E.git"
 S = "${WORKDIR}/git"
