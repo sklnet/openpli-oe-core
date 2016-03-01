@@ -1,8 +1,7 @@
 SUMMARY = "Fulan driver modules from TDT"
 DESCRIPTION = "Fulan driver modules from TDT"
 HOMEPAGE = "http://github.com/Duckbox-Developers"
-SECTION = "base"
-PRIORITY = "required"
+SECTION = "kernel/modules"
 
 LICENSE = " GPLv2"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/COPYING;md5=751419260aa954499f7abaabaa882bbe"
