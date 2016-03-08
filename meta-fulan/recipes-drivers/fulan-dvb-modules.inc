@@ -1,7 +1,7 @@
 SUMMARY = "Fulan driver modules from TDT"
 DESCRIPTION = "Fulan driver modules from TDT"
 HOMEPAGE = "http://github.com/Duckbox-Developers"
-SECTION = "base"
+SECTION = "virtual/kernel"
 PRIORITY = "required"
 
 LICENSE = " GPLv2"
@@ -17,10 +17,12 @@ inherit module
 
 PACKAGES = "${PN} ${PN}-dev"
 
-PR = "r36"
+INC_PR = "r37"
 PV = "${KV}+${SRCDATE}"
 
 PTI_NP_PATH ?= "/data/pti_np"
+
+FILESEXTRAPATHS_prepend := "${THISDIR}/fulan-dvb-modules:"
 
 SRC_URI = " \
     git://github.com/Duckbox-Developers/driver.git;protocol=git \
@@ -43,6 +45,8 @@ FILES_${PN} = "${sysconfdir}/init.d ${sysconfdir}/rcS.d ${sysconfdir}/modules-lo
 FILES = ""
 
 S = "${WORKDIR}/git"
+
+EXTRA_OEMAKE = "-e MAKEFLAGS="
 
 do_configure_prepend () {
 

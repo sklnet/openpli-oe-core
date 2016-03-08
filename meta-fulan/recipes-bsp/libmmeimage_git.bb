@@ -2,9 +2,8 @@ DESCRIPTION = "MME image library"
 
 require ddt-apps.inc
 
-PR = "r1"
-
-DEPENDS += " jpeg"
+DEPENDS += "jpeg"
+PR = "r0"
 
 do_install_append () {
 	install -d ${D}${includedir}/libmmeimage

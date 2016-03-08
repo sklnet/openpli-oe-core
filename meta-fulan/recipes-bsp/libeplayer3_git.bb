@@ -4,8 +4,8 @@ require ddt-apps.inc
 
 PR = "r1"
 
-DEPENDS = "libass ffmpeg"
-RDEPENDS_${PN} = "libass libavutil libavformat"
+DEPENDS += "libass ffmpeg"
+RDEPENDS_${PN} += "libass libavutil libavformat"
 
 do_install_append () {
 	install -d ${D}${includedir}/libeplayer3/include
