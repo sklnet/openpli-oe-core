@@ -36,7 +36,7 @@ BBLAYERS ?= \
 	$(CURDIR)/meta-wetek \
 	$(CURDIR)/meta-zgemma \
 	$(CURDIR)/meta-edision \
-	$(CURDIR)/meta-local
+	$(CURDIR)/meta-local \
         $(CURDIR)/meta-private
 
 CONFFILES = \
@@ -88,6 +88,10 @@ init: $(BBLAYERS) $(CONFFILES)
 image: init
 	@echo 'Building image for $(MACHINE)'
 	@. $(TOPDIR)/env.source && cd $(TOPDIR) && bitbake openpli-enigma2-image
+
+feed: init
+	@echo 'Building feeds for $(MACHINE)'
+	@. $(TOPDIR)/env.source && cd $(TOPDIR) && bitbake openpli-enigma2-feed
 
 update:
 	@echo 'Updating Git repositories...'
