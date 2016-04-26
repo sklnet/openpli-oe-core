@@ -12,3 +12,7 @@ EXTRA_OECONF += " \
     ${@base_contains("MACHINE_FEATURES", "eplayer3", "--with-libeplayer3=yes" , "", d)} \
 "
 
+EXTRA_OECONF += " \
+    ${@base_contains("MACHINE_TUNE", "sh4", "--enable-sh" , "", d)} \
+"
+
