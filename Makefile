@@ -36,6 +36,7 @@ BBLAYERS ?= \
 	$(CURDIR)/meta-zgemma \
 	$(CURDIR)/meta-edision \
         $(CURDIR)/meta-miraclebox \
+	$(CURDIR)/meta-spycat \
 	$(CURDIR)/meta-local \
         $(CURDIR)/meta-private
 
