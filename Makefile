@@ -31,7 +31,6 @@ BBLAYERS ?= \
 	$(CURDIR)/meta-formuler \
 	$(CURDIR)/meta-hd \
         $(CURDIR)/meta-fulan \
-	$(CURDIR)/meta-xpeedlx \
 	$(CURDIR)/meta-xpeedc \
 	$(CURDIR)/meta-wetek \
 	$(CURDIR)/meta-zgemma \
