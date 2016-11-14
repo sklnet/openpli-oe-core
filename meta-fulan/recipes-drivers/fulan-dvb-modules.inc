@@ -9,14 +9,14 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/COPYING;md5=751419260aa954499f7abaabaa882b
 
 RDEPENDS_${PN} = "stinit"
 
-KV = "2.6.32.61-stm24-0217"
+KV = "2.6.32.71-stm24-0217"
 SRCREV = "f0bd1d2493fc2e93568aa00f3bed3e3040dfb726"
 
 inherit module
 
 PACKAGES = "${PN} ${PN}-dev"
 
-INC_PR = "r40"
+INC_PR = "r42"
 PV = "${KV}+${SRCDATE}"
 
 PTI_NP_PATH ?= "/data/pti_np"
@@ -30,6 +30,7 @@ SRC_URI = " \
     file://silence_stmfb_printk.patch;patch=1 \
     file://disable_video_free_on_release.patch;patch=1 \
     file://add_hdmi_colorspace_proc.patch;patch=1 \
+    file://add_stv090x_multistream.patch;patch=1 \
     file://ddbootup \
     file://sh4booster \
     file://modules.conf \
