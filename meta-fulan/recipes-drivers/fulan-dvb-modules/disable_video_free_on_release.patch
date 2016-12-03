@@ -1,14 +1,13 @@
-diff --git a/player2_191/linux/drivers/media/dvb/stm/dvb/dvb_video.c b/player2_1
-91/linux/drivers/media/dvb/stm/dvb/dvb_video.c
+diff --git a/player2_191/linux/drivers/media/dvb/stm/dvb/dvb_video.c b/player2_191/linux/drivers/media/dvb/stm/dvb/dvb_video.c
 index 5a08615..b8d00bd 100644
 --- a/player2_191/linux/drivers/media/dvb/stm/dvb/dvb_video.c
 +++ b/player2_191/linux/drivers/media/dvb/stm/dvb/dvb_video.c
 @@ -1207,7 +1207,7 @@ static int VideoRelease(struct inode *Inode,
-                        if (MutexIsLocked)
-                                mutex_unlock(Context->ActiveVideoWriteLock);
-                }
--               DvbDisplayDelete(BACKEND_VIDEO_ID, Context->Id);
-+//             DvbDisplayDelete(BACKEND_VIDEO_ID, Context->Id);
-                /* Check to see if audio and demux have also finished so we can release the playback */
-                if ((Context->AudioStream == NULL) && (Context->DemuxStream == NULL) && (Context->Playback != NULL))
-                {
+ 			if (MutexIsLocked)
+ 				mutex_unlock(Context->ActiveVideoWriteLock);
+ 		}
+-		DvbDisplayDelete(BACKEND_VIDEO_ID, Context->Id);
++//		DvbDisplayDelete(BACKEND_VIDEO_ID, Context->Id);
+ 		/* Check to see if audio and demux have also finished so we can release the playback */
+ 		if ((Context->AudioStream == NULL) && (Context->DemuxStream == NULL) && (Context->Playback != NULL))
+ 		{
