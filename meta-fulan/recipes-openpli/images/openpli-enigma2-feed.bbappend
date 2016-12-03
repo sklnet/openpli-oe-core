@@ -10,6 +10,6 @@ OPTIONAL_PACKAGES += " \
     "
 
 ENIGMA2_OPTIONAL += " \
-    enigma2-plugin-extensions-serviceapp \
+    enigma2-plugin-systemplugins-serviceapp \
     "
 
