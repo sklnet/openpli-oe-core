@@ -64,14 +64,12 @@ else
     exit 1
 fi
 
-# restart network interfaces based on the parameters from settings-restore
-/etc/init.d/networking restart
-
 echo ${BACKUPDIR} > /tmp/backupdir
 
 if [ -s /tmp/fstab ]
 then
-	cat /tmp/fstab >> /etc/fstab
+        awk '!a[$0]++' /tmp/fstab /etc/fstab >/tmp/fstab.merged
+        mv /tmp/fstab.merged /etc/fstab
 	grep '/media/' /tmp/fstab | while read entry
 	do
 	        # echo splits entry on whitespace, cut to get the second entry

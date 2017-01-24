@@ -21,6 +21,7 @@ OPTIONAL_PACKAGES += " \
 	autossh \
 	ctorrent \
 	cups \
+	diffutils \
 	djmount \
 	dosfstools \
 	dvb-apps \
@@ -34,8 +35,12 @@ OPTIONAL_PACKAGES += " \
 	hddtemp \
 	hdparm \
 	inadyn-mt \
+	inetutils \
 	iperf \
+	iproute2 \
+	iputils \
 	joe \
+	less \
 	libbluray \
 	libudfread \
 	mc \
@@ -79,6 +84,7 @@ OPTIONAL_PACKAGES += " \
 	wscan \
 	zeroconf \
 	zip \
+	zsh \
 	${OPTIONAL_BSP_PACKAGES} \
 	"
 
