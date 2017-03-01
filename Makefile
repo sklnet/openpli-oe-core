@@ -29,8 +29,8 @@ BBLAYERS ?= \
 	$(CURDIR)/meta-xp \
 	$(CURDIR)/meta-xtrend \
 	$(CURDIR)/meta-formuler \
-	$(CURDIR)/meta-hd \
         $(CURDIR)/meta-fulan \
+	$(CURDIR)/meta-gfutures \
 	$(CURDIR)/meta-xpeedc \
 	$(CURDIR)/meta-wetek \
 	$(CURDIR)/meta-zgemma \
@@ -39,6 +39,7 @@ BBLAYERS ?= \
 	$(CURDIR)/meta-spycat \
 	$(CURDIR)/meta-gi \
 	$(CURDIR)/meta-local \
+	$(CURDIR)/meta-qt5 \
         $(CURDIR)/meta-private
 
 CONFFILES = \
