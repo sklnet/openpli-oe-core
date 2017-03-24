@@ -104,6 +104,7 @@ GST_BAD_RDEPS = "\
 	gstreamer1.0-plugins-bad-rtmp \
 	gstreamer1.0-plugins-bad-smoothstreaming \
 	gstreamer1.0-plugins-bad-faad \
+	gstreamer1.0-plugins-bad-hls \
 	gstreamer1.0-plugins-bad-fragmented \
 	gstreamer1.0-plugins-bad-videoparsersbad \
 	"
@@ -185,11 +186,18 @@ PKGV_enigma2-fonts = "${PV_enigma2-fonts}"
 PKGR_enigma2-fonts = "${PR_enigma2-fonts}"
 FILES_enigma2-fonts = "${datadir}/fonts"
 
+def get_crashaddr(d):
+    if d.getVar('CRASHADDR', True):
+        return '--with-crashlogemail="${CRASHADDR}"'
+    else:
+        return ''
+
 EXTRA_OECONF = "\
 	--with-libsdl=no --with-boxtype=${MACHINE} \
 	--enable-dependency-tracking \
 	ac_cv_prog_c_openmp=-fopenmp \
 	--with-gstversion=1.0 \
+	${@get_crashaddr(d)} \
 	${@bb.utils.contains("MACHINE_FEATURES", "textlcd", "--with-textlcd" , "", d)} \
 	${@bb.utils.contains("MACHINE_FEATURES", "7segment", "--with-7segment" , "", d)} \
 	BUILD_SYS=${BUILD_SYS} \
@@ -228,10 +236,6 @@ FILES_${PN}-src = "\
 do_openpli_branding() {
 	if [ -n "${BRANDINGDIR}" -a -d "${BRANDINGDIR}/enigma2" ] ; then
 		cp -r --preserve=mode,links ${BRANDINGDIR}/enigma2/* ${S}/data/
-	fi
-	if [ -n "${CRASHADDR}" ] ; then
-		sed "s/^#define CRASH_EMAILADDR .*/#define CRASH_EMAILADDR \"${CRASHADDR}\"/" ${S}/main/bsod.cpp > ${S}/main/bsod.cpp.new && \
-		mv ${S}/main/bsod.cpp.new ${S}/main/bsod.cpp
 	fi
 }
 
