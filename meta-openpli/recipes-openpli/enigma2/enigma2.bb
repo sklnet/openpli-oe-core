@@ -12,7 +12,7 @@ DEPENDS = " \
 	gettext-native \
 	gstreamer1.0-plugins-base gstreamer1.0 \
 	jpeg \
-	libdreamdvd libdvbsi++ libfribidi libmad libpng libsigc++-1.2 giflib libxml2 \
+	libdreamdvd libdvbsi++ libfribidi libmad libpng libsigc++-2.0 giflib libxml2 \
 	openssl libudfread \
 	python-imaging python-twisted python-wifi \
 	swig-native \
@@ -161,11 +161,9 @@ inherit gitpkgv pythonnative
 PV = "2.7+git${SRCPV}"
 PKGV = "2.7+git${GITPKGV}"
 
-ENIGMA2_BRANCH ?= "master"
+ENIGMA2_BRANCH ?= "develop"
 GITHUB_URI ?= "git://github.com"
 SRC_URI = "${GITHUB_URI}/OpenPLi/${BPN}.git;branch=${ENIGMA2_BRANCH}"
-
-SRC_URI += "file://0001-picload.cpp-adapt-to-newer-giflib-version.patch"
 
 LDFLAGS_prepend = " -lxml2 "
 

@@ -10,7 +10,7 @@ PV = "${PKGVERSION}-${SRCPV}"
 PKGV = "${PKGVERSION}-${GITPKGV}"
 
 SRC_URI = "git://github.com/eriksl/enigma2-plugin-extensions-lcd4linux-ihad-source-copy.git"
-SRCREV = "9e6df17507c553cb33f49f4e5176d3fc266bc40a"
+SRCREV = "${AUTOREV}"
 
 DEPENDS += "\
 	libusb \
@@ -44,8 +44,8 @@ do_compile() {
 }
 
 do_install() {
-	cp -Rp "${S}/usr" "${D}"
-	cp -Rp "${S}/etc" "${D}"
+	cp -r --preserve=mode,links "${S}/usr" "${D}"
+	cp -r --preserve=mode,links "${S}/etc" "${D}"
 }
 
 FILES_${PN} = "\
