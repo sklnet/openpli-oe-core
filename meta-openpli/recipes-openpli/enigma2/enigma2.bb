@@ -4,8 +4,6 @@ MAINTAINER = "OpenPLi team <info@openpli.org>"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=751419260aa954499f7abaabaa882bbe"
 
-SRCREV = "${AUTOREV}"
-
 DEPENDS = " \
 	avahi \
 	freetype \
@@ -178,7 +176,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 inherit autotools pkgconfig
 
 PACKAGES =+ "enigma2-fonts"
-PV_enigma2-fonts = "2015.02.06"
+PV_enigma2-fonts = "2017.04.30"
 PR_enigma2-fonts = "r0"
 PKGV_enigma2-fonts = "${PV_enigma2-fonts}"
 PKGR_enigma2-fonts = "${PR_enigma2-fonts}"
