@@ -1,5 +1,5 @@
 DESCRIPTION = "pyLoad is a fast, lightweight and full featured download manager for many One-Click-Hoster"
-LICENSE = "GPL"
+LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=d4333f07cbfa8fe036e90820f556b2ad"
 HOMEPAGE = "http://pyload.org/"
 RDEPENDS_${PN} = "\
@@ -25,7 +25,7 @@ PR = "r1"
 
 inherit update-rc.d
 
-SRC_URI = "https://github.com/pyload/pyload/releases/download/v${PV}/pyload-src-v${PV}.zip \
+SRC_URI = "http://sources.openelec.tv/mirror/pyload/pyload-src-v${PV}.zip \
   file://pyload.init \
   file://pyload.tar.gz.defaults"
 SRC_URI[md5sum] = "28876150af22999b6f539c8579d3b415"
