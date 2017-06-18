@@ -67,12 +67,16 @@ GST_BASE_RDEPS = "\
 	gstreamer1.0-plugins-base-app \
 	gstreamer1.0-plugins-base-audioconvert \
 	gstreamer1.0-plugins-base-audioresample \
+	gstreamer1.0-plugins-base-audiorate \
+	gstreamer1.0-plugins-base-videoconvert \
 	gstreamer1.0-plugins-base-ivorbisdec \
 	gstreamer1.0-plugins-base-ogg \
+	gstreamer1.0-plugins-base-opus \
 	gstreamer1.0-plugins-base-playback \
 	gstreamer1.0-plugins-base-subparse \
 	gstreamer1.0-plugins-base-typefindfunctions \
 	gstreamer1.0-plugins-base-vorbis \
+	gstreamer1.0-plugins-base-rawparse \
 	"
 
 GST_GOOD_RDEPS = "\
@@ -89,12 +93,14 @@ GST_GOOD_RDEPS = "\
 	gstreamer1.0-plugins-good-rtp \
 	gstreamer1.0-plugins-good-rtpmanager \
 	gstreamer1.0-plugins-good-rtsp \
-	gstreamer1.0-plugins-good-souphttpsrc \
+	gstreamer1.0-plugins-good-soup \
 	gstreamer1.0-plugins-good-udp \
 	gstreamer1.0-plugins-good-wavparse \
+	gstreamer1.0-plugins-good-wavpack \
 	"
 
 GST_BAD_RDEPS = "\
+	gstreamer1.0-plugins-bad-autoconvert \
 	gstreamer1.0-plugins-bad-dashdemux \
 	gstreamer1.0-plugins-bad-mms \
 	gstreamer1.0-plugins-bad-mpegpsdemux \
@@ -103,7 +109,7 @@ GST_BAD_RDEPS = "\
 	gstreamer1.0-plugins-bad-smoothstreaming \
 	gstreamer1.0-plugins-bad-faad \
 	gstreamer1.0-plugins-bad-hls \
-	gstreamer1.0-plugins-bad-fragmented \
+	gstreamer1.0-plugins-bad-opusparse \
 	gstreamer1.0-plugins-bad-videoparsersbad \
 	"
 
@@ -113,7 +119,7 @@ GST_UGLY_RDEPS = "\
 	gstreamer1.0-plugins-ugly-asf \
 	gstreamer1.0-plugins-ugly-cdio \
 	gstreamer1.0-plugins-ugly-dvdsub \
-	gstreamer1.0-plugins-ugly-mad \
+	gstreamer1.0-plugins-ugly-mpg123 \
 	"
 
 # DVD and iso playback is integrated, we need the libraries
@@ -229,13 +235,6 @@ FILES_${PN}-src = "\
 	/usr/lib/enigma2/python/*/*/*.py \
 	/usr/lib/enigma2/python/*/*/*/*.py \
 	"
-do_openpli_branding() {
-	if [ -n "${BRANDINGDIR}" -a -d "${BRANDINGDIR}/enigma2" ] ; then
-		cp -r --preserve=mode,links ${BRANDINGDIR}/enigma2/* ${S}/data/
-	fi
-}
-
-addtask openpli_branding after do_unpack before do_configure
 
 do_install_append() {
 	install -d ${D}/usr/share/keymaps

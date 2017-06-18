@@ -67,6 +67,7 @@ OPTIONAL_PACKAGES += " \
 	python-requests \
 	python-mechanize \
 	python-lxml \
+	python-js2py \
 	picocom \
 	ppp \
 	rsync \
@@ -113,6 +114,7 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-systemplugins-signalfinder \
 	enigma2-plugin-systemplugins-extnumberzap \
 	enigma2-plugin-systemplugins-serviceapp \
+	enigma2-plugin-systemplugins-plexdvrapi \
 	enigma2-plugin-extensions-historyzapselector \
 	enigma2-plugin-extensions-lcd4linux \
 	enigma2-plugin-extensions-tmbd \
