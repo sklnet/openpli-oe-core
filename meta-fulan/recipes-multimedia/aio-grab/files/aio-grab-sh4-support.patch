@@ -1,6 +1,8 @@
---- a/main.c	2016-02-05 05:54:26.814696240 +0200
-+++ b/main.c	2016-02-05 05:53:48.070504119 +0200
-@@ -37,10 +37,39 @@
+diff --git a/main.c b/main.c
+index 3888cee..7118c94 100644
+--- a/main.c
++++ b/main.c
+@@ -37,10 +37,39 @@ Feel free to use the code for your own projects. See LICENSE file for details.
  #include <sys/mman.h>
  #include <linux/types.h>
  #include <linux/fb.h>
@@ -40,59 +42,64 @@
  #define CLAMP(x)    ((x < 0) ? 0 : ((x > 255) ? 255 : x))
  #define SWAP(x,y)	{ x ^= y; y ^= x; x ^= y; }
  
-@@ -83,7 +112,7 @@
+@@ -83,7 +112,7 @@ void fast_resize(const unsigned char *source, unsigned char *dest, int xsource,
  void (*resize)(const unsigned char *source, unsigned char *dest, int xsource, int ysource, int xdest, int ydest, int colors);
  void combine(unsigned char *output, const unsigned char *video, const unsigned char *osd, int vleft, int vtop, int vwidth, int vheight, int xres, int yres);
  
--static enum {UNKNOWN, PALLAS, VULCAN, WETEKPLAY, XILLEON, BRCM7366ARM, BRCM7439, BRCM7445, BRCM7400, BRCM7401, BRCM7405, BRCM7325, BRCM7335, BRCM7358, BRCM7362, BRCM73625, BRCM7241, BRCM7346, BRCM7356, BRCM73565, BRCM7424, BRCM7425, BRCM7435, BRCM7552} stb_type = UNKNOWN;
-+//static enum {UNKNOWN, PALLAS, VULCAN, WETEKPLAY, XILLEON, BRCM7366ARM, BRCM7439, BRCM7445, BRCM7400, BRCM7401, BRCM7405, BRCM7325, BRCM7335, BRCM7358, BRCM7362, BRCM73625, BRCM7241, BRCM7346, BRCM7356, BRCM73565, BRCM7424, BRCM7425, BRCM7435, BRCM7552} stb_type = UNKNOWN;
+-static enum {UNKNOWN, PALLAS, VULCAN, WETEKPLAY, XILLEON, BRCM_ARM, BRCM7439, BRCM7445, BRCM7400, BRCM7401, BRCM7405, BRCM7325, BRCM7335, BRCM7358, BRCM7362, BRCM73625, BRCM7241, BRCM7346, BRCM7356, BRCM73565, BRCM7424, BRCM7425, BRCM7435, BRCM7552, BRCM75845, BRCM7584} stb_type = UNKNOWN;
++//static enum {UNKNOWN, PALLAS, VULCAN, WETEKPLAY, XILLEON, BRCM_ARM, BRCM7439, BRCM7445, BRCM7400, BRCM7401, BRCM7405, BRCM7325, BRCM7335, BRCM7358, BRCM7362, BRCM73625, BRCM7241, BRCM7346, BRCM7356, BRCM73565, BRCM7424, BRCM7425, BRCM7435, BRCM7552, BRCM75845, BRCM7584} stb_type = UNKNOWN;
  
  
  static int chr_luma_stride = 0x40;
-@@ -113,6 +142,7 @@
+@@ -112,7 +141,7 @@ int main(int argc, char **argv)
+ 	int output_bytes=3;
  
  	const char* filename = "/tmp/screenshot.bmp";
- 
+-
 +#if 0
  	// detect STB
  	char buf[256];
  	FILE *fp = fopen("/proc/fb","r");
-@@ -365,6 +395,7 @@
+@@ -388,7 +417,7 @@ int main(int argc, char **argv)
  		default:
  			break;
  	}
+-
 +#endif
- 
  	// process command line
  	while ((c = getopt (argc, argv, "dhj:lbnopqr:sv")) != -1)
-@@ -447,14 +478,18 @@
+ 	{
+@@ -469,16 +498,16 @@ int main(int argc, char **argv)
+ 		filename = argv[optind];
  
  	int mallocsize=1920*1080;
- 
+-
 +#if 0
  	if (stb_type == VULCAN || stb_type == PALLAS)
  		mallocsize=720*576;
+-
 +#endif
- 
  	video = (unsigned char *)malloc(mallocsize*3);
  	osd = (unsigned char *)malloc(mallocsize*4);
- 
+-
 +#if 0
  	if ((stb_type == VULCAN || stb_type == PALLAS) && width > 720)
  		mallocsize=width*(width * 0.8 + 1);
+-
 +#endif
- 
  	output = (unsigned char *)malloc(mallocsize*4);
  
-@@ -470,6 +505,7 @@
+ 	// get osd
+@@ -492,7 +521,7 @@ int main(int argc, char **argv)
+ 			fprintf(stderr, "Grabbing Video ...\n");
  		getvideo(video,&xres_v,&yres_v);
  	}
- 
+-
 +#if 0
  	// get aspect ratio
  	if (stb_type == VULCAN || stb_type == PALLAS)
  	{
-@@ -484,6 +520,10 @@
+@@ -507,6 +536,10 @@ int main(int argc, char **argv)
  	else
  	{
  		fp = fopen("/proc/stb/vmpeg/0/aspect", "r");
@@ -103,17 +110,18 @@
  		if (fp)
  		{
  			while (fgets(buf,sizeof(buf), fp))
-@@ -520,7 +560,9 @@
+@@ -543,8 +576,9 @@ int main(int argc, char **argv)
  		}
  		if (dst_width == 720) dst_width = 0;
  		if (dst_height == 576) dst_height = 0;
 +#if 0
  	}
+-
 +#endif
- 
  	// resizing
   	if (video_only)
-@@ -802,7 +844,16 @@
+ 	{
+@@ -825,7 +859,16 @@ void getvideo(unsigned char *video, int *xres, int *yres)
  	int stride = 0;
  	FILE *fp;
  	char buf[256];
@@ -128,20 +136,20 @@
 +	char *decode_surface;
 +	int delay;
 +#if 0
- 	if ((stb_type == BRCM7366ARM) || (stb_type == BRCM7439) || (stb_type == BRCM7445))
+ 	if ((stb_type == BRCM_ARM) || (stb_type == BRCM7439) || (stb_type == BRCM7445))
  	{
  		int fd_video = open("/dev/dvb/adapter0/video0", O_RDONLY);
-@@ -819,12 +870,226 @@
+@@ -841,13 +884,225 @@ void getvideo(unsigned char *video, int *xres, int *yres)
+ 		*yres = 1080;
  		return;
  	}
- 
+-
 +#endif
  	if ((mem_fd = open("/dev/mem", O_RDWR|O_SYNC) ) < 0)
  	{
  		fprintf(stderr, "Mainmemory: can't open /dev/mem \n");
  		return;
  	}
- 
 +	fp = fopen("/proc/stb/vmpeg/0/xres", "r");
 +	if (fp)
 +	{
@@ -205,7 +213,7 @@
 +		}
 +		fclose(fp);
 +	}
-+
+ 
 +	printf("Using bpa2 part %s - 0x%lx %lu\n", bpa_data.bpa_part, bpa_data.phys_addr, bpa_data.mem_size);
 +
 +	//bpa_data.phys_addr = 0x4a824000;
@@ -358,18 +366,20 @@
  	if (stb_type > XILLEON)
  	{
  		// grab bcm pic from decoder memory
-@@ -1253,6 +1518,7 @@
+@@ -1276,7 +1531,7 @@ void getvideo(unsigned char *video, int *xres, int *yres)
  		return;
  
  	}
+-
 +#endif
- 
  	close(mem_fd);
  
-@@ -1278,12 +1544,14 @@
+ 	// yuv2rgb conversion (4:2:0)
+@@ -1300,14 +1555,14 @@ void getvideo(unsigned char *video, int *xres, int *yres)
+ 			int GU=yuv2rgbtable_gu[U];
  			int GV=yuv2rgbtable_gv[V];
  			int BV=yuv2rgbtable_bv[V];
- 
+-
 +#if 0
  			switch (stb_type) //on xilleon we use bgr instead of rgb so simply swap the coeffs
  			{
@@ -377,11 +387,12 @@
  					SWAP(RU,BV);
  					break;
  			}
+-
 +#endif
- 
  			// now we do 4 pixels on each iteration this is more code but much faster
  			int Y=yuv2rgbtable_y[luma[pos]];
-@@ -1333,10 +1601,10 @@
+ 
+@@ -1356,10 +1611,10 @@ void getosd(unsigned char *osd, int *xres, int *yres)
  	struct fb_fix_screeninfo fix_screeninfo;
  	struct fb_var_screeninfo var_screeninfo;
  
@@ -394,20 +405,20 @@
  		if (fb == -1)
  		{
  			fprintf(stderr, "Framebuffer failed\n");
-@@ -1431,6 +1699,7 @@
+@@ -1453,7 +1708,7 @@ void getosd(unsigned char *osd, int *xres, int *yres)
+ 			fprintf(stderr, "Mainmemory: <Memmapping failed>\n");
  			return;
  		}
- 
+-
 +#if 0
  		if (stb_type == VULCAN) // DM500/5620 stores the colors as a 16bit word with yuv values, so we have to convert :(
  		{
  			unsigned short yuv;
-@@ -1471,6 +1740,8 @@
- 			fprintf(stderr, "unsupported framebuffermode\n");
- 			return;
+@@ -1512,6 +1767,7 @@ void getosd(unsigned char *osd, int *xres, int *yres)
+ 			}
+ 			pos2+=ofs;
  		}
 +#endif
-+
- 		close(mem_fd);
+ 	}
+ 	close(fb);
  
- 		// get 8bit framebuffer

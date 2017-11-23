@@ -5,11 +5,3 @@ OPTIONAL_PACKAGES_remove_sh4 = " \
     wscan \
     "
 
-OPTIONAL_PACKAGES += " \
-    exteplayer3 \
-    "
-
-ENIGMA2_OPTIONAL += " \
-    enigma2-plugin-systemplugins-serviceapp \
-    "
-

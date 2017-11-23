@@ -1,7 +1,7 @@
 DESCRIPTION = "STM ST-231 Coprocessor firmware"
 LICENSE = "CLOSED"
 SECTION = "base"
-PACKAGE_ARCH = "all"
+inherit allarch
 require conf/license/openpli-gplv2.inc
 
 # fix architecture mismatch QA error
