@@ -59,7 +59,6 @@ BBLAYERS ?= \
         $(CURDIR)/meta-fulan \
 	$(CURDIR)/meta-gfutures \
 	$(CURDIR)/meta-xpeedc \
-	$(CURDIR)/meta-wetek \
 	$(CURDIR)/meta-zgemma \
 	$(CURDIR)/meta-edision \
 	$(CURDIR)/meta-miraclebox \
