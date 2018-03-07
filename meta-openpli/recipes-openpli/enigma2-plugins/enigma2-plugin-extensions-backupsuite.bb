@@ -4,25 +4,18 @@ MAINTAINER = "Persian Professionals"
 AUTHOR = "Pedro Newbie <pedro.newbie@gmail.com>"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=84dcc94da3adb52b53ae4fa38fe49e5d"
 
-SRC_URI = "git://github.com/persianpros/BackupSuite.git;protocol=git"
+SRC_URI = "git://github.com/PLi-metas/BackupSuite.git;protocol=git"
 
-inherit gitpkgv
-
-S = "${WORKDIR}/git"
-SRC = "${S}/usr/lib/enigma2/python/Plugins/Extensions/BackupSuite"
-DEST = "${D}/usr/lib/enigma2/python/Plugins/Extensions/BackupSuite"
-
-PV = "21+git${SRCPV}"
-PKGV = "21+git${GITPKGV}"
+# don't inherit allarch, it can't work with arch-dependent RDEPENDS
+inherit gitpkgv distutils-openplugins gettext
 
 RDEPENDS_${PN} = "mtd-utils mtd-utils-ubifs ofgwrite"
 
-FILES_${PN} = "/usr/lib/enigma2/python/Plugins/Extensions/BackupSuite"
+S = "${WORKDIR}/git"
+
+PV = "25+git${SRCPV}"
+PKGV = "25+git${GITPKGV}"
 
 do_install_append() {
-	install -d ${DEST}
-	cp -r --preserve=mode,links ${SRC}/* ${DEST}
-	# remove the files we do not want in our package
-	find ${DEST} -name '*.pyo' -exec rm {} \;
-	find ${DEST} -name '*.po' -exec rm {} \;
+	find "${D}" -name '*.sh' -exec chmod a+x '{}' ';'
 }

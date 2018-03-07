@@ -7,13 +7,14 @@ inherit gitpkgv autotools pkgconfig
 
 PV = "1.0+git${SRCPV}"
 PKGV = "1.0+git${GITPKGV}"
+VER ?= "${@bb.utils.contains('MACHINE_FEATURES', 'hisil', '-v2', '', d)}"
 
 SRC_URI = "git://github.com/zgemma-star/e2plugins.git;protocol=git"
 
 PACKAGES = "${PN}"
 RDEPENDS_${PN}  = "qtwebkit"
 
-S = "${WORKDIR}/git/qthbbtv"
+S = "${WORKDIR}/git/qthbbtv${VER}"
 
 QtHbbtv = "enigma2/python/Plugins/Extensions/QtHbbtv"
 
@@ -35,7 +36,9 @@ do_install() {
 	install -m 0755 ${S}/qthbbtv ${D}${bindir}
 	install -d ${D}${libdir}/mozilla/plugins
 	install -m 0755 ${S}/libnpapihbbtvplugin.so ${D}${libdir}/mozilla/plugins
-	ln -s /usr/share/fonts ${D}${libdir}/fonts
+	install -d ${D}/usr/lib
+	cd ${D}/usr/lib
+	ln -sf ../share/fonts fonts
 }
 
 PACKAGE_ARCH := "${MACHINE_ARCH}"

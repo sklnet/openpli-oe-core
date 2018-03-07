@@ -1,6 +1,8 @@
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
+SRC_URI_append_dm8000 = " file://get-rid-of-orgdream-check.patch"
+
 python do_cleanup () {
     # contains: MACHINE, box image, remote image, remote map
     boxtypes = [
@@ -12,6 +14,7 @@ python do_cleanup () {
         ('osmini', 'osmini.png', 'osmini.png', 'osmini.html'),
         ('osminiplus', 'osminiplus.png', 'osmini.png', 'osmini.html'),
         ('osnino', 'osnino.png', 'edision1.png', 'edision1.html'),
+        ('osninoplus', 'osnino.png', 'edision1.png', 'edision1.html'),
         ('formuler1', 'formuler1.png', 'formuler1.png', 'formuler1.html'),
         ('formuler3', 'formuler3.png', 'formuler1.png', 'formuler1.html'),
         ('formuler4', 'formuler4.png', 'formuler1.png', 'formuler1.html'),
@@ -75,11 +78,15 @@ python do_cleanup () {
         ('h5', 'h5.png', 'h3.png', 'h3.html'),
         ('h6', 'h5.png', 'h3.png', 'h3.html'),
         ('h7', 'h7.png', 'h3.png', 'h3.html'),
+        ('h9', 'h9.png', 'h9.png', 'h9.html'),
         ('i55', 'i55.png', 'i55.png', 'i55.html'),
         ('lc', 'lc.png', 'sh1.png', 'sh1.html'),
         ('sh1', 'sh1.png', 'sh1.png', 'sh1.html'),
         ('vipercombo', 'vipercombo.png', 'amiko.png', 'amiko.html'),
+        ('vipercombohdd', 'vipercombohdd.png', 'amiko1.png', 'amiko1.html'),
         ('vipert2c', 'vipert2c.png', 'amiko.png', 'amiko.html'),
+        ('lunix3-4k', 'lunix3-4k.png', 'qviart.png', 'qviart.html'),
+        ('lunix', 'lunix.png', 'qviart.png', 'qviart.html'),
     ]
 
     import os
@@ -104,9 +111,6 @@ python do_cleanup () {
                 exception = 'et7500.png'
             elif x[0] == 'xpeedc':
                 exception = 'xpeedlx.png'
-            elif x[0] == 'dm8000':
-                dir = '%s/public/static/remotes' % pluginpath
-                os.system('cp %s/dmm1.html %s/dmm.html' % (dir, dir))
             break
 
     for root, dirs, files in os.walk(images + 'boxes', topdown=False):

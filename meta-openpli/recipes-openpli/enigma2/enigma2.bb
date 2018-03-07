@@ -36,6 +36,7 @@ RRECOMMENDS_${PN} = " \
 	hotplug-e2-helper \
 	glibc-gconv-utf-16 \
 	python-sendfile \
+	ofgwrite \
 	${GST_BASE_RDEPS} \
 	${GST_GOOD_RDEPS} \
 	${GST_BAD_RDEPS} \
@@ -214,7 +215,7 @@ EXTRA_OEMAKE = "\
 	"
 
 # Swig generated 200k enigma.py file has no purpose for end users
-FILES_${PN}-dbg += "\
+FILES_${PN}-src += "\
 	/usr/lib/enigma2/python/enigma.py \
 	"
 
