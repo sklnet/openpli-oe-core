@@ -70,8 +70,7 @@ BBLAYERS ?= \
 	$(CURDIR)/meta-gigablue \
 	$(CURDIR)/meta-amiko \
 	$(CURDIR)/meta-local \
-	$(CURDIR)/meta-qt5 \
-        $(CURDIR)/meta-private
+	$(CURDIR)/meta-qt5
 
 CONFFILES = \
 	$(TOPDIR)/env.source \

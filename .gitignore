@@ -2,7 +2,6 @@
 /.deps/
 !/meta-openpli/
 !/meta-local/
-/meta-private/
 /openembedded-core/
 /sources
 /meta-local/recipes-local/
