@@ -1,4 +1,4 @@
-include glibc-collateral.inc
+require glibc-collateral.inc
 
 SUMMARY = "Locale data from glibc"
 
@@ -23,7 +23,7 @@ ENABLE_BINARY_LOCALE_GENERATION_pn-nativesdk-glibc-locale = "1"
 
 #enable locale generation on these arches
 # BINARY_LOCALE_ARCHES is a space separated list of regular expressions
-BINARY_LOCALE_ARCHES ?= "arm.* aarch64 i[3-6]86 x86_64 powerpc mips mips64 sh sh4"
+BINARY_LOCALE_ARCHES ?= "arm.* aarch64 i[3-6]86 x86_64 powerpc mips mips64"
 
 # set "1" to use cross-localedef for locale generation
 # set "0" for qemu emulation of native localedef for locale generation
@@ -41,22 +41,22 @@ PACKAGES_DYNAMIC = "^locale-base-.* \
 # Create a glibc-binaries package
 ALLOW_EMPTY_${BPN}-binaries = "1"
 PACKAGES += "${BPN}-binaries"
-RRECOMMENDS_${BPN}-binaries =  "${@" ".join([p for p in d.getVar('PACKAGES', True).split() if p.find("glibc-binary") != -1])}"
+RRECOMMENDS_${BPN}-binaries =  "${@" ".join([p for p in d.getVar('PACKAGES').split() if p.find("glibc-binary") != -1])}"
 
 # Create a glibc-charmaps package
 ALLOW_EMPTY_${BPN}-charmaps = "1"
 PACKAGES += "${BPN}-charmaps"
-RRECOMMENDS_${BPN}-charmaps =  "${@" ".join([p for p in d.getVar('PACKAGES', True).split() if p.find("glibc-charmap") != -1])}"
+RRECOMMENDS_${BPN}-charmaps =  "${@" ".join([p for p in d.getVar('PACKAGES').split() if p.find("glibc-charmap") != -1])}"
 
 # Create a glibc-gconvs package
 ALLOW_EMPTY_${BPN}-gconvs = "1"
 PACKAGES += "${BPN}-gconvs"
-RRECOMMENDS_${BPN}-gconvs =  "${@" ".join([p for p in d.getVar('PACKAGES', True).split() if p.find("glibc-gconv") != -1])}"
+RRECOMMENDS_${BPN}-gconvs =  "${@" ".join([p for p in d.getVar('PACKAGES').split() if p.find("glibc-gconv") != -1])}"
 
 # Create a glibc-localedatas package
 ALLOW_EMPTY_${BPN}-localedatas = "1"
 PACKAGES += "${BPN}-localedatas"
-RRECOMMENDS_${BPN}-localedatas =  "${@" ".join([p for p in d.getVar('PACKAGES', True).split() if p.find("glibc-localedata") != -1])}"
+RRECOMMENDS_${BPN}-localedatas =  "${@" ".join([p for p in d.getVar('PACKAGES').split() if p.find("glibc-localedata") != -1])}"
 
 DESCRIPTION_localedef = "glibc: compile locale definition files"
 
@@ -66,7 +66,7 @@ DESCRIPTION_localedef = "glibc: compile locale definition files"
 FILES_${MLPREFIX}glibc-gconv = "${libdir}/gconv/*"
 FILES_localedef = "${bindir}/localedef"
 
-LOCALETREESRC = "${STAGING_INCDIR}/glibc-locale-internal-${MULTIMACH_TARGET_SYS}"
+LOCALETREESRC = "${STAGING_DIR}-components/${PACKAGE_ARCH}/glibc-stash-locale"
 
 do_install () {
 	mkdir -p ${D}${bindir} ${D}${datadir} ${D}${libdir}

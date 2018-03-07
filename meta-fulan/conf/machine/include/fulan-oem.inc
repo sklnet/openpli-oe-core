@@ -11,8 +11,10 @@ KERNEL_FILE = "uImage"
 ROOTFS_FILE = "e2jffs2.img"
 
 MACHINE_KERNEL_PR = "r14"
+KERNEL_MODULE_PACKAGE_SUFFIX = ""
 
 TARGET_ARCH = "sh4"
+DEFAULTTUNE = "sh4"
 
 GCCVERSION = "4.9.4"
 
@@ -26,7 +28,7 @@ SERIAL_CONSOLE = "115200 ttyAS0"
 
 DVBPROVIDER = "kernel"
 
-MACHINE_FEATURES = "3dtv alsa hdmicec switchoff kernel26 ext2 usbhost serial dvb-c singlecore textlcd sh4booster no-nmap omb skins1080 directfb sdl"
+MACHINE_FEATURES = "3dtv alsa hdmicec switchoff kernel26 ext2 usbhost serial dvb-c singlecore textlcd sh4booster no-nmap omb skins1080 directfb"
 
 DVBMEDIASINK_CONFIG = "--with-wma --with-wmv --with-pcm --with-dtsdownmix --with-eac3"
 
@@ -88,6 +90,7 @@ MACHINE_EXTRA_RRECOMMENDS = " \
 include conf/machine/include/autoload-filesystems.inc
 
 require conf/machine/include/tune-sh4.inc
+require conf/machine/include/soc-family.inc
 
 # add support for extra feeds
 PACKAGE_ARCHS += " ${MACHINEBUILD}"
