@@ -69,6 +69,7 @@ BBLAYERS ?= \
 	$(CURDIR)/meta-sab \
 	$(CURDIR)/meta-gigablue \
 	$(CURDIR)/meta-amiko \
+	$(CURDIR)/meta-axasuhd \
 	$(CURDIR)/meta-local \
 	$(CURDIR)/meta-qt5
 

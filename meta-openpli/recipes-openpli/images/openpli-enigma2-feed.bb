@@ -34,6 +34,7 @@ OPTIONAL_PACKAGES += " \
 	exteplayer3 \
 	fuse-exfat \
 	gdb \
+	grep \
 	gstplayer \
 	hddtemp \
 	hdparm \
@@ -118,6 +119,7 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-extensions-refreshbouquet \
 	enigma2-plugin-extensions-fallbackreceiver \
 	enigma2-plugin-extensions-managerautofs \
+	enigma2-plugin-extensions-moviemanager \
 	enigma2-plugin-systemplugins-mountmanager \
 	enigma2-plugin-systemplugins-signalfinder \
 	enigma2-plugin-systemplugins-extnumberzap \
