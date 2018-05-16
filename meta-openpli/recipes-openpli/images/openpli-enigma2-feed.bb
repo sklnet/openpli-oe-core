@@ -48,6 +48,7 @@ OPTIONAL_PACKAGES += " \
 	libbluray \
 	libudfread \
 	mc \
+	pv \
 	minisatip \
 	mtd-utils \
 	mtools \
@@ -119,6 +120,7 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-extensions-refreshbouquet \
 	enigma2-plugin-extensions-fallbackreceiver \
 	enigma2-plugin-extensions-managerautofs \
+	enigma2-plugin-extensions-hdmitest \
 	enigma2-plugin-extensions-moviemanager \
 	enigma2-plugin-systemplugins-mountmanager \
 	enigma2-plugin-systemplugins-signalfinder \
@@ -135,6 +137,8 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-security-firewall \
 	enigma2-plugin-skins-pli-hd \
 	enigma2-plugin-skins-pli-hd-fullnight \
+	enigma2-plugin-skins-simple-gray-hd \
+	enigma2-plugin-skins-pd1loi-hd-night \
 	enigma2-plugins \
 	enigma2-skins \
 	picons-enigma2-meta \
@@ -146,6 +150,7 @@ ENIGMA2_OPTIONAL = " \
 	${@bb.utils.contains('OPENPLI_FEATURES', 'kodi', 'enigma2-plugin-extensions-kodi', '', d)} \
 	${@bb.utils.contains('MACHINE_FEATURES', 'kodi', 'enigma2-plugin-extensions-kodi', '', d)} \
 	${@bb.utils.contains('OPENPLI_FEATURES', 'qtplugins', 'enigma2-plugin-extensions-qthbbtv enigma2-plugin-extensions-qtstalker', '', d)} \
+	${@bb.utils.contains("MACHINE_FEATURES", "transcoding", "streamproxy", "", d)} \
 	dvb-usb-drivers-meta \
 	cdtextinfo \
 	meta-enigma2-dvdburn \
