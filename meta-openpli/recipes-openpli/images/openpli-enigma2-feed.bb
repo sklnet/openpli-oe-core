@@ -74,6 +74,7 @@ OPTIONAL_PACKAGES += " \
 	python-lxml \
 	python-js2py \
 	python-pyexecjs \
+	python-beautifulsoup4 \
 	picocom \
 	ppp \
 	rsync \
@@ -81,6 +82,7 @@ OPTIONAL_PACKAGES += " \
 	sabnzbd \
 	satipclient \
 	screen \
+	sed \
 	sshpass \
 	smartmontools \
 	strace \
@@ -114,6 +116,7 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-extensions-dlnaserver \
 	enigma2-plugin-extensions-blurayplayer \
 	enigma2-plugin-extensions-epgimport \
+	enigma2-plugin-extensions-fontinfo \
 	enigma2-plugin-extensions-iptvplayer-deps \
 	enigma2-plugin-extensions-youtube \
 	enigma2-plugin-extensions-openmultiboot \
@@ -122,6 +125,7 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-extensions-managerautofs \
 	enigma2-plugin-extensions-hdmitest \
 	enigma2-plugin-extensions-moviemanager \
+	enigma2-plugin-systemplugins-crossepg \
 	enigma2-plugin-systemplugins-mountmanager \
 	enigma2-plugin-systemplugins-signalfinder \
 	enigma2-plugin-systemplugins-extnumberzap \
@@ -141,11 +145,10 @@ ENIGMA2_OPTIONAL = " \
 	enigma2-plugin-skins-pd1loi-hd-night \
 	enigma2-plugins \
 	enigma2-skins \
-	picons-enigma2-meta \
 	softcams-enigma2-meta \
 	packagegroup-openplugins \
 	${@bb.utils.contains("MACHINE_FEATURES", "blindscan-dvbs", "enigma2-plugin-systemplugins-satscan" , "", d)} \
-	${@bb.utils.contains("MACHINE_FEATURES", "dreambox", "", "enigma2-plugin-extensions-backupsuite", d)} \
+	enigma2-plugin-extensions-backupsuite \
 	${@bb.utils.contains('EXTRA_IMAGEDEPENDS', 'vuplus-tuner-turbo', 'enigma2-plugin-drivers-dvb-usb-turbo', '', d)} \
 	${@bb.utils.contains('OPENPLI_FEATURES', 'kodi', 'enigma2-plugin-extensions-kodi', '', d)} \
 	${@bb.utils.contains('MACHINE_FEATURES', 'kodi', 'enigma2-plugin-extensions-kodi', '', d)} \

@@ -1,3 +1,4 @@
+# Just a comment line to avoid PAK archive (application/x-pak)
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
@@ -15,6 +16,7 @@ python do_cleanup () {
         ('osminiplus', 'osminiplus.png', 'osmini.png', 'osmini.html'),
         ('osnino', 'osnino.png', 'edision1.png', 'edision1.html'),
         ('osninoplus', 'osninoplus.png', 'edision2.png', 'edision2.html'),
+        ('osninopro', 'osninopro.png', 'edision3.png', 'edision3.html'),
         ('formuler1', 'formuler1.png', 'formuler1.png', 'formuler1.html'),
         ('formuler3', 'formuler3.png', 'formuler1.png', 'formuler1.html'),
         ('formuler4', 'formuler4.png', 'formuler1.png', 'formuler1.html'),
@@ -29,6 +31,7 @@ python do_cleanup () {
         ('hd2400', 'hd2400.png', 'hd2400.png', 'hd2400.html'),
         ('hd500c', 'hd500c.png', 'hd1x00.png', 'hd1x00.html'),
         ('hd51', 'hd51.png', 'hd1x00.png', 'hd1x00.html'),
+        ('hd60', 'hd60.png', 'hd60.png', 'hd60.html'),
         ('hd530c', 'hd530c.png', 'hd1x00.png', 'hd1x00.html'),
         ('vs1000', 'vs1000.png', 'vs1x00.png', 'vs1x00.html'),
         ('vs1500', 'vs1500.png', 'vs1x00.png', 'vs1x00.html'),
